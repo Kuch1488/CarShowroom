@@ -1,4 +1,6 @@
-﻿namespace Showroom.Domain.Entities
+﻿using System.Text.Json.Serialization;
+
+namespace Showroom.Domain.Entities
 {
     public partial class Gearbox
     {
@@ -11,6 +13,7 @@
         public string Type { get; set; } = null!;
         public int Number { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Model> Models { get; set; }
     }
 }

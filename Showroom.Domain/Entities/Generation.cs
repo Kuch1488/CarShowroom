@@ -1,4 +1,6 @@
-﻿namespace Showroom.Domain.Entities
+﻿using System.Text.Json.Serialization;
+
+namespace Showroom.Domain.Entities
 {
     public partial class Generation
     {
@@ -11,6 +13,7 @@
         public Int16 Year { get; set; }
         public int Produced { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Model> Models { get; set; }
     }
 }

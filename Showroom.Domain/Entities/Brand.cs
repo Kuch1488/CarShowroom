@@ -1,4 +1,6 @@
-﻿namespace Showroom.Domain.Entities
+﻿using System.Text.Json.Serialization;
+
+namespace Showroom.Domain.Entities
 {
     public partial class Brand
     {
@@ -10,6 +12,7 @@
         public int IdBrand { get; set; }
         public string Name { get; set; } = null!;
 
+        [JsonIgnore]
         public virtual ICollection<Model> Models { get; set; }
     }
 }

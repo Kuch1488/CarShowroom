@@ -1,4 +1,6 @@
-﻿namespace Showroom.Domain.Entities
+﻿using System.Text.Json.Serialization;
+
+namespace Showroom.Domain.Entities
 {
     public partial class Body
     {
@@ -12,6 +14,7 @@
         public int Volume { get; set; }
         public int Door { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Model> Models { get; set; } 
     }
 }

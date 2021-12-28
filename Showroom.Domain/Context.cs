@@ -25,7 +25,7 @@ namespace Showroom.Domain
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Body>(entity =>
             {

@@ -1,4 +1,6 @@
-﻿namespace Showroom.Domain.Entities
+﻿using System.Text.Json.Serialization;
+
+namespace Showroom.Domain.Entities
 {
     public partial class Car
     {
@@ -16,6 +18,7 @@
         public virtual Model? IdModelNavigation { get; set; }
         public virtual CarShowroom? IdShowroomNavigation { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<StateElement> StateElements { get; set; }
     }
 }

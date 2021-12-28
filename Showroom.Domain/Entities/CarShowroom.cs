@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Showroom.Domain.Entities
 {
@@ -22,6 +18,7 @@ namespace Showroom.Domain.Entities
         [EmailAddress]
         public string Email { get; set; } = null!;
 
+        [JsonIgnore]
         public virtual ICollection<Car> Cars { get; set; }
     }
 }

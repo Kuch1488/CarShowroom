@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Showroom.Domain.Entities
@@ -22,6 +23,7 @@ namespace Showroom.Domain.Entities
         public int IdGeneration { get; set; }
         public int IdEngine { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Car> Cars { get; set; }
 
         public virtual Body? IdBodyNavigation { get; set; }

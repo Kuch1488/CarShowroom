@@ -1,4 +1,6 @@
-﻿namespace Showroom.Domain.Entities
+﻿using System.Text.Json.Serialization;
+
+namespace Showroom.Domain.Entities
 {
     public partial class State
     {
@@ -10,6 +12,7 @@
         public int IdState { get; set; }
         public string Name { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<StateElement> StateElements { get; set; }
     }
 }
