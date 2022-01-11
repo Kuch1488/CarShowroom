@@ -35,7 +35,7 @@ namespace Showroom.Infrastructure.Repository
 
         public async Task<Body> GetBody(int id)
         {
-            if(!await _context.Bodies.AnyAsync(o => o.IdBody == id)) throw new Exception("Record doesn't exist");
+            if(!await _context.Bodies.AnyAsync(o => o.idBody == id)) throw new Exception("Record doesn't exist");
             return await _context.Bodies.FindAsync(id);
         }
 

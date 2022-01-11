@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 
 namespace Showroom.Domain.Entities
 {
@@ -16,11 +11,17 @@ namespace Showroom.Domain.Entities
 
         public int IdModel { get; set; }
         public string Name { get; set; } = null!;
+        [JsonIgnore]
         public int IdBody { get; set; }
+        [JsonIgnore]
         public int IdBrand { get; set; }
+        [JsonIgnore]
         public int IdClass { get; set; }
+        [JsonIgnore]
         public int IdGearbox { get; set; }
+        [JsonIgnore]
         public int IdGeneration { get; set; }
+        [JsonIgnore]
         public int IdEngine { get; set; }
 
         [JsonIgnore]

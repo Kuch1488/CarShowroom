@@ -2,6 +2,7 @@
 using Showroom.Domain;
 using Showroom.Domain.Entities;
 using Showroom.Domain.Entities.Interface;
+using System.Collections;
 
 namespace Showroom.Infrastructure.Repository
 {
@@ -27,15 +28,28 @@ namespace Showroom.Infrastructure.Repository
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Model> GetModel(int id)
+        public async Task<IEnumerable> GetModel(int id)
         {
             if(!await _context.Models.AnyAsync(o => o.IdModel == id)) throw new Exception("Record doesn't exist");
-            return await _context.Models.FindAsync(id);
+            return await _context.Models.Where(a => a.IdModel == id)
+                .Include(a => a.IdBodyNavigation)
+                .Include(a => a.IdBrandNavigation)
+                .Include(a => a.IdClassNavigation)
+                .Include(a => a.IdEngineNavigation)
+                .Include(a => a.IdGearboxNavigation)
+                .Include(a => a.IdGenerationNavigation)
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<Model>> GetModels()
         {
-            return await _context.Models.ToListAsync();
+            return await _context.Models.Include(a => a.IdBodyNavigation)
+                .Include(a => a.IdBrandNavigation)
+                .Include(a => a.IdClassNavigation)
+                .Include(a => a.IdEngineNavigation)
+                .Include(a => a.IdGearboxNavigation)
+                .Include(a => a.IdGenerationNavigation)
+                .ToListAsync();
         }
 
         public async Task Update(Model model)

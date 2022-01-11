@@ -36,7 +36,7 @@ namespace Showroom.Controllers
             try
             {
                 Body newBody = await _bodyRepository.Create(body);
-                return CreatedAtAction(nameof(GetBody), new {id = newBody.IdBody} ,newBody);
+                return CreatedAtAction(nameof(GetBody), new {id = newBody.idBody} ,newBody);
             }
             catch (Exception ex)
             {
@@ -51,7 +51,7 @@ namespace Showroom.Controllers
             try
             {
                 await _bodyRepository.Update(body);
-                return CreatedAtAction(nameof(GetBody), new {id = body.IdBody}, body);
+                return CreatedAtAction(nameof(GetBody), new {id = body.idBody}, body);
             }
             catch (Exception ex)
             {

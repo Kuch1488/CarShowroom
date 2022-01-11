@@ -2,6 +2,7 @@
 using Showroom.Domain.Entities;
 using Showroom.Domain.Entities.Interface;
 using Microsoft.EntityFrameworkCore;
+using System.Collections;
 
 namespace Showroom.Infrastructure.Repository
 {
@@ -27,15 +28,17 @@ namespace Showroom.Infrastructure.Repository
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Car> GetCar(string vin_number)
+        public async Task<IEnumerable> GetCar(string vin_number)
         {
             if(!await _context.Cars.AnyAsync(o => o.VinNumber == vin_number)) throw new Exception("Record doesn't exist");
-            return await _context.Cars.FindAsync(vin_number);
+            return await _context.Cars.Where(a => a.VinNumber == vin_number)
+                .Include(a => a.IdModelNavigation)
+                .Include(a => a.IdShowroomNavigation).ToListAsync();
         }
 
         public async Task<IEnumerable<Car>> GetCars()
         {
-            return await _context.Cars.ToListAsync();
+            return await _context.Cars.Include(a => a.IdModelNavigation).Include(a => a.IdShowroomNavigation).ToListAsync();
         }
 
         public async Task Update(Car car)

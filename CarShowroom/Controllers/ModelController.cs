@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Showroom.Domain.Entities;
 using Showroom.Domain.Entities.Interface;
+using System.Collections;
 
 namespace Showroom.Controllers
 {
@@ -17,11 +18,12 @@ namespace Showroom.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<ActionResult<Model>> GetModel(int id)
+        public async Task<ActionResult<IEnumerable>> GetModel(int id)
         {
             try
             {
-                return await _modelRepository.GetModel(id);
+                IEnumerable Models = await _modelRepository.GetModel(id);
+                return Ok(Models);
             }
             catch (Exception ex)
             {

@@ -12,9 +12,11 @@ namespace Showroom.Domain.Entities
         public string VinNumber { get; set; } = null!;
         public string Colour { get; set; } = null!;
         public decimal Price { get; set; }
+        [JsonIgnore]
         public int IdShowroom { get; set; }
+        [JsonIgnore]
         public int IdModel { get; set; }
-
+        
         public virtual Model? IdModelNavigation { get; set; }
         public virtual CarShowroom? IdShowroomNavigation { get; set; }
 

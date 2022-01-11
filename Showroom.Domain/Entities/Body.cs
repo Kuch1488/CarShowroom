@@ -9,7 +9,7 @@ namespace Showroom.Domain.Entities
             Models = new HashSet<Model>();
         }
 
-        public int IdBody { get; set; }
+        public int idBody { get; set; }
         public string Name { get; set; } = null!;
         public int Volume { get; set; }
         public int Door { get; set; }

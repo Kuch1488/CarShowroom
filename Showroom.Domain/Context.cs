@@ -29,11 +29,11 @@ namespace Showroom.Domain
 
             modelBuilder.Entity<Body>(entity =>
             {
-                entity.HasKey(e => e.IdBody);
+                entity.HasKey(e => e.idBody);
 
                 entity.ToTable("Body");
 
-                entity.Property(e => e.IdBody).HasColumnName("idbody");
+                entity.Property(e => e.idBody).HasColumnName("idbody");
                 entity.Property(e => e.Name).HasColumnName("Name").HasMaxLength(45);
                 entity.Property(e => e.Volume).HasColumnName("Volume");
                 entity.Property(e => e.Door).HasColumnName("Door");
@@ -58,15 +58,15 @@ namespace Showroom.Domain
                 entity.Property(e => e.VinNumber).HasColumnName("vin-number").HasMaxLength(20);
                 entity.Property(e => e.Colour).HasColumnName("Colour").HasMaxLength(45);
                 entity.Property(e => e.Price).HasColumnName("Price");
-                entity.Property(e => e.IdModel).HasColumnName("idModel");
-                entity.Property(e => e.IdShowroom).HasColumnName("idShowroom");
+                entity.Property(e => e.IdModel).HasColumnName("IdModel");
+                entity.Property(e => e.IdShowroom).HasColumnName("IdShowroom");
 
                 entity.HasOne(d => d.IdModelNavigation)
-                .WithMany()
+                .WithMany(p => p.Cars)
                 .HasForeignKey(d => d.IdModel);
 
                 entity.HasOne(d => d.IdShowroomNavigation)
-                .WithMany()
+                .WithMany(p => p.Cars)
                 .HasForeignKey(d => d.IdShowroom);
             });
 
@@ -123,7 +123,7 @@ namespace Showroom.Domain
                 entity.ToTable("ModelOption");
 
                 entity.Property(e => e.IdModel).HasColumnName("idModel");
-                entity.Property(e => e.IdOption).HasColumnName("idOption");
+                entity.Property(e => e.IdOption).HasColumnName("IdOption");
 
                 entity.HasOne(d => d.IdModelNavigation)
                 .WithMany()
@@ -175,7 +175,7 @@ namespace Showroom.Domain
                 entity.Property(e => e.IdStateElement).HasColumnName("idStateElement");
                 entity.Property(e => e.Name).HasColumnName("Name").HasMaxLength(45);
                 entity.Property(e => e.VinNumber).HasColumnName("vin-number").HasMaxLength(20);
-                entity.Property(e => e.IdState).HasColumnName("idState");
+                entity.Property(e => e.IdState).HasColumnName("IdState");
 
                 entity.HasOne(d => d.IdCarNavigation)
                 .WithMany()
@@ -193,30 +193,30 @@ namespace Showroom.Domain
 
                 entity.Property(e => e.IdModel).HasColumnName("idModel");
                 entity.Property(e => e.Name).HasColumnName("Name").HasMaxLength(45);
-                entity.Property(e => e.IdBody).HasColumnName("idBody");
-                entity.Property(e => e.IdBrand).HasColumnName("idBrand");
-                entity.Property(e => e.IdClass).HasColumnName("idClass");
-                entity.Property(e => e.IdEngine).HasColumnName("idEngine");
-                entity.Property(e => e.IdGearbox).HasColumnName("idGearbox");
-                entity.Property(e => e.IdGeneration).HasColumnName("idGeneration");
+                entity.Property(e => e.IdBody).HasColumnName("IdBody");
+                entity.Property(e => e.IdBrand).HasColumnName("IdBrand");
+                entity.Property(e => e.IdClass).HasColumnName("IdClass");
+                entity.Property(e => e.IdEngine).HasColumnName("IdEngine");
+                entity.Property(e => e.IdGearbox).HasColumnName("IdGearbox");
+                entity.Property(e => e.IdGeneration).HasColumnName("IdGeneration");
 
                 entity.HasOne(d => d.IdBodyNavigation)
-                .WithMany()
+                .WithMany(p => p.Models)
                 .HasForeignKey(d => d.IdBody);
                 entity.HasOne(d => d.IdBrandNavigation)
-                .WithMany()
+                .WithMany(p => p.Models)
                 .HasForeignKey(d => d.IdBrand);
                 entity.HasOne(d => d.IdClassNavigation)
-                .WithMany()
+                .WithMany(p => p.Models)
                 .HasForeignKey(d => d.IdClass);
                 entity.HasOne(d => d.IdEngineNavigation)
-                .WithMany()
+                .WithMany(p => p.Models)
                 .HasForeignKey(d => d.IdEngine);
                 entity.HasOne(d => d.IdGearboxNavigation)
-                .WithMany()
+                .WithMany(p => p.Models)
                 .HasForeignKey(d => d.IdGearbox);
                 entity.HasOne(d => d.IdGenerationNavigation)
-                .WithMany()
+                .WithMany(p => p.Models)
                 .HasForeignKey(d => d.IdGeneration);
             });
 

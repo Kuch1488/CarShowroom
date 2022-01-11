@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Showroom.Domain.Entities;
 using Showroom.Domain.Entities.Interface;
+using System.Collections;
 
 namespace Showroom.Controllers
 {
@@ -18,11 +19,12 @@ namespace Showroom.Controllers
 
         [HttpGet]
         [Route("{vin_number}")]
-        public async Task<ActionResult<Car>> GetCar(string vin_number)
+        public async Task<ActionResult<IEnumerable>> GetCar(string vin_number)
         {
             try
             {
-                return await _carRepository.GetCar(vin_number);
+                IEnumerable Cars = await _carRepository.GetCar(vin_number);
+                return Ok(Cars);
             }
             catch (Exception ex)
             {
