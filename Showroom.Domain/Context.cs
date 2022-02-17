@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Showroom.Domain.Entities;
+using Showroom.Domain.Entitis.UserEntities;
 
 namespace Showroom.Domain
 {
@@ -22,6 +23,8 @@ namespace Showroom.Domain
         public virtual DbSet<CarShowroom> Showrooms { get; set; } = null!;
         public virtual DbSet<State> State { get; set; } = null!;
         public virtual DbSet<StateElement> StateElements { get; set; } = null!;
+        public virtual DbSet<User> Users { get; set; } = null!;
+        public virtual DbSet<Wishlist> Wishlist { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -218,6 +221,37 @@ namespace Showroom.Domain
                 entity.HasOne(d => d.IdGenerationNavigation)
                 .WithMany(p => p.Models)
                 .HasForeignKey(d => d.IdGeneration);
+            });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasKey(e => e.IdUser);
+
+                entity.ToTable("User");
+
+                entity.Property(e => e.IdUser).HasColumnName("Iduser");
+                entity.Property(e => e.UserName).HasColumnName("UserName").HasMaxLength(45);
+                entity.Property(e => e.Email).HasColumnName("Email").HasMaxLength(45);
+                entity.Property(e => e.Phone).HasColumnName("Phone").HasMaxLength(16);
+                entity.Property(e => e.Password).HasColumnName("Password").HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<Wishlist>(entity =>
+            {
+                entity.HasKey(e => e.IdWishlist);
+
+                entity.ToTable("Wishlist");
+
+                entity.Property(e => e.IdWishlist).HasColumnName("IsWishlist");
+                entity.Property(e => e.Date).HasColumnName("Date");
+                entity.Property(e => e.IdUser).HasColumnName("IdUser").HasMaxLength(20);
+
+                entity.HasOne(d => d.IdUserNavigation)
+                .WithMany(p => p.Wishlists)
+                .HasForeignKey(d => d.IdUser);
+                entity.HasOne(d => d.IdCarNavigation)
+                .WithMany(p => p.Wishlists)
+                .HasForeignKey(d => d.IdCar);
             });
 
             OnModelCreatingPartial(modelBuilder);

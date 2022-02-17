@@ -11,7 +11,7 @@ namespace Showroom.Domain.Entitis.UserEntities
         [JsonIgnore]
         public int IdUser { get; set; }
         [JsonIgnore]
-        public int IdCar { get; set; }
+        public string IdCar { get; set; } = null!;
 
         public virtual User? IdUserNavigation { get; set; }
         public virtual Car? IdCarNavigation { get; set; }
