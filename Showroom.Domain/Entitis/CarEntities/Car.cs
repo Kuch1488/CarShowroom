@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using Showroom.Domain.Entitis.UserEntities;
+using System.Text.Json.Serialization;
 
 namespace Showroom.Domain.Entities
 {
@@ -7,6 +8,8 @@ namespace Showroom.Domain.Entities
         public Car()
         {
             StateElements = new HashSet<StateElement>();
+            Wishlists = new HashSet<Wishlist>();
+
         }
 
         public string VinNumber { get; set; } = null!;
@@ -22,5 +25,7 @@ namespace Showroom.Domain.Entities
 
         [JsonIgnore]
         public virtual ICollection<StateElement> StateElements { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<Wishlist> Wishlists { get; set; }
     }
 }

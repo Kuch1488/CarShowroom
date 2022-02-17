@@ -32,13 +32,39 @@ namespace Showroom.Infrastructure.Repository
         {
             if(!await _context.Cars.AnyAsync(o => o.VinNumber == vin_number)) throw new Exception("Record doesn't exist");
             return await _context.Cars.Where(a => a.VinNumber == vin_number)
+                .Include(a => a.IdShowroomNavigation)
                 .Include(a => a.IdModelNavigation)
-                .Include(a => a.IdShowroomNavigation).ToListAsync();
+                    .ThenInclude(a => a.IdBodyNavigation)
+                .Include(a => a.IdModelNavigation)
+                    .ThenInclude(a => a.IdBrandNavigation)
+                .Include(a => a.IdModelNavigation)
+                    .ThenInclude(a => a.IdClassNavigation)
+                .Include(a => a.IdModelNavigation)
+                    .ThenInclude(a => a.IdEngineNavigation)
+                .Include(a => a.IdModelNavigation)
+                    .ThenInclude(a => a.IdGearboxNavigation)
+                .Include(a => a.IdModelNavigation)
+                    .ThenInclude(a => a.IdGenerationNavigation)
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<Car>> GetCars()
         {
-            return await _context.Cars.Include(a => a.IdModelNavigation).Include(a => a.IdShowroomNavigation).ToListAsync();
+            return await _context.Cars
+                .Include(a => a.IdShowroomNavigation)
+                .Include(a => a.IdModelNavigation)
+                    .ThenInclude(a => a.IdBodyNavigation)
+                .Include(a => a.IdModelNavigation)
+                    .ThenInclude(a => a.IdBrandNavigation)
+                .Include(a => a.IdModelNavigation)
+                    .ThenInclude(a => a.IdClassNavigation)
+                .Include(a => a.IdModelNavigation)
+                    .ThenInclude(a => a.IdEngineNavigation)
+                .Include(a => a.IdModelNavigation)
+                    .ThenInclude(a => a.IdGearboxNavigation)
+                .Include(a => a.IdModelNavigation)
+                    .ThenInclude(a => a.IdGenerationNavigation)
+                .ToListAsync();
         }
 
         public async Task Update(Car car)

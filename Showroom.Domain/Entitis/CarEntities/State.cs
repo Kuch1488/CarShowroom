@@ -10,7 +10,7 @@ namespace Showroom.Domain.Entities
         }
 
         public int IdState { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
         [JsonIgnore]
         public virtual ICollection<StateElement> StateElements { get; set; }
