@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Showroom.Domain;
 using Showroom.Domain.Entities.Interface;
+using Showroom.Infrastructure.Helpers;
+using Showroom.Infrastructure.Middleware;
 using Showroom.Infrastructure.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +24,7 @@ builder.Services.AddScoped<IStateRepository, StateRepository>();
 
 builder.Services.AddDbContext<Context>(o => o.UseMySql(builder.Configuration.GetConnectionString("BloggingDatabase"), 
     new MySqlServerVersion(new System.Version(8, 0, 22))));
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
 builder.Services.AddControllers();
 builder.Services.AddMvc();
@@ -52,9 +55,12 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<JwtMiddleware>();
+
 app.UseHttpsRedirection();
 app.UseCors("MyPolicy");
 app.UseAuthorization();
+app.UseAuthentication();
 app.MapControllers();
 
 app.Run();

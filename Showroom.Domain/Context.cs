@@ -229,7 +229,7 @@ namespace Showroom.Domain
 
                 entity.ToTable("User");
 
-                entity.Property(e => e.IdUser).HasColumnName("Iduser");
+                entity.Property(e => e.IdUser).HasColumnName("IdUser");
                 entity.Property(e => e.UserName).HasColumnName("UserName").HasMaxLength(45);
                 entity.Property(e => e.Email).HasColumnName("Email").HasMaxLength(45);
                 entity.Property(e => e.Phone).HasColumnName("Phone").HasMaxLength(16);
@@ -244,7 +244,8 @@ namespace Showroom.Domain
 
                 entity.Property(e => e.IdWishlist).HasColumnName("IsWishlist");
                 entity.Property(e => e.Date).HasColumnName("Date");
-                entity.Property(e => e.IdUser).HasColumnName("IdUser").HasMaxLength(20);
+                entity.Property(e => e.IdUser).HasColumnName("IdUser");
+                entity.Property(e => e.IdCar).HasColumnName("vin-number").HasMaxLength(20);
 
                 entity.HasOne(d => d.IdUserNavigation)
                 .WithMany(p => p.Wishlists)
