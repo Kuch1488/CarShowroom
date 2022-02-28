@@ -9,6 +9,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\BodyController.cs" />
+    <Compile Remove="Controllers\BrandController.cs" />
+    <Compile Remove="Controllers\ClasssController.cs" />
+    <Compile Remove="Controllers\EngineController.cs" />
+    <Compile Remove="Controllers\GearboxController.cs" />
+    <Compile Remove="Controllers\GenerationController.cs" />
+    <Compile Remove="Controllers\ModelController.cs" />
+    <Compile Remove="Controllers\ModelOptionController.cs" />
+    <Compile Remove="Controllers\OptionController.cs" />
+    <Compile Remove="Controllers\ShowroomController.cs" />
+    <Compile Remove="Controllers\StateController.cs" />
+    <Compile Remove="Controllers\StateElementController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.22" />

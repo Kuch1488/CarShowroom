@@ -9,6 +9,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Entitis\CarEntities\Interface\IBodyRepository.cs" />
+    <Compile Remove="Entitis\CarEntities\Interface\IBrandRepository.cs" />
+    <Compile Remove="Entitis\CarEntities\Interface\IClassRepository.cs" />
+    <Compile Remove="Entitis\CarEntities\Interface\IEngineRepository.cs" />
+    <Compile Remove="Entitis\CarEntities\Interface\IGearboxRepository.cs" />
+    <Compile Remove="Entitis\CarEntities\Interface\IGenerationRepository.cs" />
+    <Compile Remove="Entitis\CarEntities\Interface\IModelOptionRepository.cs" />
+    <Compile Remove="Entitis\CarEntities\Interface\IModelRepository.cs" />
+    <Compile Remove="Entitis\CarEntities\Interface\IOptionRepository.cs" />
+    <Compile Remove="Entitis\CarEntities\Interface\IShowroomRepository.cs" />
+    <Compile Remove="Entitis\CarEntities\Interface\IStateElementRepository.cs" />
+    <Compile Remove="Entitis\CarEntities\Interface\IStateRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.22" />
   </ItemGroup>

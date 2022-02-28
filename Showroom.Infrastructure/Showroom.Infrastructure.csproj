@@ -8,6 +8,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Repository\BodyRepository.cs" />
+    <Compile Remove="Repository\BrandRepository.cs" />
+    <Compile Remove="Repository\CarRepository.cs" />
+    <Compile Remove="Repository\ClassRepository.cs" />
+    <Compile Remove="Repository\EngineRepository.cs" />
+    <Compile Remove="Repository\GearboxRepository.cs" />
+    <Compile Remove="Repository\GenerationRepository.cs" />
+    <Compile Remove="Repository\ModelOptionRepository.cs" />
+    <Compile Remove="Repository\ModelRepository.cs" />
+    <Compile Remove="Repository\OptionRepository.cs" />
+    <Compile Remove="Repository\ShowroomRepository.cs" />
+    <Compile Remove="Repository\StateElementRepository.cs" />
+    <Compile Remove="Repository\StateRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
