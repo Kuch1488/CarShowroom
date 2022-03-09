@@ -13,17 +13,17 @@ namespace Showroom.Controllers
         [HttpGet]
         public async Task<IEnumerable<T>> GetAllAsync() => await _repository.GetAll();
 
-        //[HttpGet("{id}")]
-       // public async Task<T> GetAsync(int id) => await _repository.GetById(id);
+        [HttpGet("{id}")]
+        public async Task<T> GetAsync(int id) => await _repository.GetById(id);
 
         [HttpPost]
         public async Task PostAsync([FromBody]T entity) => await _repository.Insert(entity);
 
-        //[HttpDelete]
-        //public async Task DeleteAsync(int id)
-        //{
-        //    T entity = await _repository.GetById(id);
-        //    await _repository.Delete(entity);
-        //}
+        [HttpDelete]
+        public async Task DeleteAsync(int id)
+        {
+            T entity = await _repository.GetById(id);
+            await _repository.Delete(entity);
+        }
     }
 }

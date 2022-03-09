@@ -22,7 +22,7 @@ namespace Showroom.Infrastructure.Repository
 
         public async Task<IEnumerable<TEntity>> GetAll() => await _entities.ToListAsync();
 
-        //public async Task<TEntity> GetById(int id) => await _entities.FirstAsync(id);
+        public async Task<TEntity> GetById(int id) => await _entities.FindAsync(id);
 
         public async Task Insert(TEntity entity)
         {
