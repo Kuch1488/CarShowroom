@@ -29,5 +29,11 @@ namespace Showroom.Infrastructure.Repository
             await _entities.AddAsync(entity);
             await _context.SaveChangesAsync();
         }
+
+        public async Task Update(TEntity entity)
+        {
+            _context.Entry(entity).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
     }
 }

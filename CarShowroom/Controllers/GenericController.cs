@@ -25,5 +25,8 @@ namespace Showroom.Controllers
             T entity = await _repository.GetById(id);
             await _repository.Delete(entity);
         }
+
+        [HttpPut]
+        public async Task PutAsync([FromBody]T entity) => await _repository.Update(entity);
     }
 }
