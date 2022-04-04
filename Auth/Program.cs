@@ -66,6 +66,7 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 }
 
 app.UseMiddleware<JwtMiddleware>();
+app.UseMiddleware<CustomExceptionHandlerMiddleware>();
 
 app.UseHttpsRedirection();
 app.UseCors("MyPolicy");
